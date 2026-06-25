@@ -117,19 +117,22 @@
     var form = payButton.closest('form');
     if (form) {
       form.addEventListener('submit', function (event) {
-        event.preventDefault();
         var verifyDialog = document.querySelector('[role="dialog"][aria-label="Verify your payment"]');
         if (verifyDialog) {
+          event.preventDefault();
           verifyDialog.hidden = false;
         }
       });
-    }
 
-    payButton.addEventListener('click', function () {
-      if (form) {
-        form.requestSubmit();
-      }
-    });
+      payButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (typeof form.requestSubmit === 'function') {
+          form.requestSubmit();
+        } else {
+          form.submit();
+        }
+      });
+    }
   }
 })();
 </script>
