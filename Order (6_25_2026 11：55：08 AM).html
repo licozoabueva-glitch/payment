@@ -118,7 +118,7 @@
     if (form) {
       form.addEventListener('submit', function (event) {
         event.preventDefault();
-        var verifyDialog = document.querySelector('[role="dialog"][aria-label*="Verify"]');
+        var verifyDialog = document.querySelector('[role="dialog"][aria-label="Verify your payment"]');
         if (verifyDialog) {
           verifyDialog.hidden = false;
         }
