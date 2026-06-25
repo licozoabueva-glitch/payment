@@ -125,6 +125,12 @@
         if (typeof form.requestSubmit === 'function') {
           form.requestSubmit();
         } else {
+          if (typeof form.checkValidity === 'function' && !form.checkValidity()) {
+            if (typeof form.reportValidity === 'function') {
+              form.reportValidity();
+            }
+            return;
+          }
           form.submit();
         }
       });
